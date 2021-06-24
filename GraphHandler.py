@@ -9,7 +9,6 @@ def ExcelSpecificSheet(excel_file, sheet_name): #GETS THE SPECIFIC SHEET WE WANT
         return pd.read_excel(excel_file, sheet_name)
         
 def EdgesSheetNames(excel_file): #GENERATES THE SHEET NAMES
-
     return pd.ExcelFile(excel_file).sheet_names
 
 def EdgesSheetsList(excel_file): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
@@ -26,7 +25,10 @@ def EdgesConcatenator(excel_file): #GENERATES THE CONCATENATED LIST OF EDGES
 
 
 #DEMO OF WORKING
-graph = nx.read_edgelist(r'C:\Users\Michael\Project\cow.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
+
+EdgesConcatenator(r'FrequencyList3.xlsx').to_csv('edges.csv', index=False, header=False)
+
+graph = nx.read_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
 nx.draw(graph, arrows=1, with_labels=1)
 
 #nx.adjacency_matrix(graph).todense()
