@@ -1,5 +1,4 @@
 import numpy as np
-#from csv import reader
 import pandas as pd
 import networkx as nx
 
@@ -23,13 +22,13 @@ def GetEdgesList(excel_file): #GENERATES THE CONCATENATED LIST OF EDGES
     EdgesList = GetSheetList(excel_file)
     return pd.concat(EdgesList)
 
-def GenEdgesCSV(excel_file, output_csv): #GENERATES THE .csv file of edges from xlsx
+def GenEdgesCSV(excel_file, output_csv): #GENERATES THE .csv FILE OF EDGES FROM A .xslx
     return GetEdgesList(excel_file).to_csv(output_csv, index=False, header=False)
 
 
 #DEMO OF WORKING
 
-#GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "cow.csv")
+#GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
 
 
 #graph = nx.read_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
