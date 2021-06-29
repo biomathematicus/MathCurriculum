@@ -5,5 +5,3 @@ class CurriculumGraph:
     minDistance = []
     
     def __init__(course):
-        
-    
