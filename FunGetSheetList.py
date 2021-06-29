@@ -1,18 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 25 10:14:35 2021
-
-@author: llywyllyn
-"""
-
-import numpy as np
 import pandas as pd
-import networkx as nx
 
 
-from GetSheet import GetSheet
-from GetSheetNames import GetSheetNames
+from FunGetSheet import GetSheet
+from FunGetSheetNames import GetSheetNames
 
 def GetSheetList(excel_file): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
     EdgesList = []
