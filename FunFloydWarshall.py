@@ -1,3 +1,5 @@
+import numpy as np
+
 def FloydWarshall(adjacency):
     v = int(np.sqrt(int(adjacency.size)))
     inf = np.infty

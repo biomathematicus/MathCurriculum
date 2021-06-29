@@ -1,13 +1,12 @@
-# import pandas as pd
-# import numpy as np
-# import networkx as np
-# from numpy import genfromtxt
 import FunGetSheet
 import FunGetSheetNames
 import FunGetSheetList
 import FunGetEdgesList
 import FunGenEdgesCSV
 import FunFloydWarshall
+import FunGenAdjacencyCSV
+import FunGetAdjacency
+import FunGenLeastDistance
 
 class CurriculumGraph:
     
@@ -28,6 +27,15 @@ class CurriculumGraph:
     
     def FunGetSheetNames(excel_file):
         return FunGetSheetNames.GetSheetNames(excel_file)
+    
+    def GenAdjacencyCSV(graph, output_filename):
+        return FunGenAdjacencyCSV.GenAdjacencyCSV(graph, output_filename)
+    
+    def GetAdjacency(input_filename):
+        return FunGetAdjacency.GetAdjacency(input_filename)
+    
+    def GenLeastDistance(adjacency, output_filename):
+        return FunGenLeastDistance.GenLeastDistance(adjacency, output_filename)
     
     # adjacency = []
     # labels = []
