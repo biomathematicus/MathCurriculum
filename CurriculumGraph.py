@@ -5,10 +5,21 @@ import FunGetEdgesList
 import FunGenEdgesCSV
 import FunFloydWarshall
 import FunGenAdjacencyCSV
-import FunGetAdjacency
+import FunGetMatrix
 import FunGenLeastDistance
+import FunGenRoute
 
 class CurriculumGraph:
+    
+    # adjacency = []
+    # labels = []
+    # minDistance = []
+    
+    # CMR, MCA, MNI matrices put here
+    
+    # def __init__(course):
+    #     print("cow")
+    
     
     def GenEdgesCSV(excel_file, output_csv):
         return FunGenEdgesCSV.GenEdgesCSV(excel_file, output_csv)
@@ -25,21 +36,19 @@ class CurriculumGraph:
     def GetSheetList(excel_file):
         return FunGetSheetList.GetSheetList(excel_file)
     
-    def FunGetSheetNames(excel_file):
+    def GetSheetNames(excel_file):
         return FunGetSheetNames.GetSheetNames(excel_file)
     
     def GenAdjacencyCSV(graph, output_filename):
         return FunGenAdjacencyCSV.GenAdjacencyCSV(graph, output_filename)
     
-    def GetAdjacency(input_filename):
-        return FunGetAdjacency.GetAdjacency(input_filename)
+    def GetMatrix(input_filename):
+        return FunGetMatrix.GetMatrix(input_filename)
     
     def GenLeastDistance(adjacency, output_filename):
         return FunGenLeastDistance.GenLeastDistance(adjacency, output_filename)
     
-    # adjacency = []
-    # labels = []
-    # minDistance = []
+    def GenRoute(adjacency, least_distance):
+        return FunGenRoute.GenRoute(adjacency, least_distance)
     
-    # def __init__(course):
-    #     print("cow")
+    

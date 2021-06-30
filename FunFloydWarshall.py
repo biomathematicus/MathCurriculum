@@ -6,7 +6,7 @@ def FloydWarshall(adjacency):
     dist = np.full((v,v), inf)
     for a in range(v):
         for b in range(v):
-            if adjacency[a][b] == 1:
+            if adjacency[a][b] != 0:
                 dist[a][b] = adjacency[a][b]
         dist[a][a] = 0
     for k in range(v):
