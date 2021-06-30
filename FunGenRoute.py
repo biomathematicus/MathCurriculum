@@ -15,7 +15,7 @@ def GenRoute(adjacency, least_distance):
     for i in range(v):
         for j in range(v):
             for k in range(v):
-                if (least_distance[i][j] >= least_distance[i][k] + least_distance[k][j] and adjacency[i][k] < inf and i != k and j != k):
+                if (least_distance[i][j] >= least_distance[i][k] + least_distance[k][j] and adjacency[i,k] < inf and i != k and j != k):
                     if least_distance[i][j] == inf:
                         route[i][j] = j + 1
                     else:

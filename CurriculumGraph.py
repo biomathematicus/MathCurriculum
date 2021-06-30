@@ -3,11 +3,10 @@ import FunGetSheetNames
 import FunGetSheetList
 import FunGetEdgesList
 import FunGenEdgesCSV
-import FunFloydWarshall
-import FunGenAdjacencyCSV
 import FunGetMatrix
 import FunGenLeastDistance
 import FunGenRoute
+import FunGenAdjacency
 
 class CurriculumGraph:
     
@@ -24,9 +23,6 @@ class CurriculumGraph:
     def GenEdgesCSV(excel_file, output_csv):
         return FunGenEdgesCSV.GenEdgesCSV(excel_file, output_csv)
     
-    def FloydWarshall(adjacency):
-        return FunFloydWarshall.FloydWarshall(adjacency)
-    
     def GetEdgesList(excel_file):
         return FunGetEdgesList.GetEdgesList(excel_file)
     
@@ -39,14 +35,14 @@ class CurriculumGraph:
     def GetSheetNames(excel_file):
         return FunGetSheetNames.GetSheetNames(excel_file)
     
-    def GenAdjacencyCSV(graph, output_filename):
-        return FunGenAdjacencyCSV.GenAdjacencyCSV(graph, output_filename)
-    
+    def GenAdjacency(graph):
+        return FunGenAdjacency.GenAdjacency(graph)
+ 
     def GetMatrix(input_filename):
         return FunGetMatrix.GetMatrix(input_filename)
     
-    def GenLeastDistance(adjacency, output_filename):
-        return FunGenLeastDistance.GenLeastDistance(adjacency, output_filename)
+    def GenLeastDistance(adjacency):
+        return FunGenLeastDistance.GenLeastDistance(adjacency)
     
     def GenRoute(adjacency, least_distance):
         return FunGenRoute.GenRoute(adjacency, least_distance)
