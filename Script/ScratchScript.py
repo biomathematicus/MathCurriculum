@@ -1,4 +1,4 @@
-import CurriculumGraph
+import Class.CurriculumGraph as CurriculumGraph
 import networkx as nx
 import numpy as np
 
@@ -7,7 +7,7 @@ cg = CurriculumGraph.CurriculumGraph #in parentheses put list of courses or stuf
 
 #DEMO OF WORKING
 
-#cg.GenEdgesCSV(r'Frequency_List_Of_Topics.xlsx', "edges.csv")
+cg.GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
 
 graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
 # graph = nx.DiGraph()
@@ -35,6 +35,6 @@ graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.Di
 adjacency = cg.GenAdjacency(graph)
 np.savetxt("adjacency.csv", adjacency, delimiter = ',')
 least_distance = cg.GenLeastDistance(adjacency)
-np.savetxt("least_distance.csv", least_distance)
-route = cg.GenRoute(adjacency, least_distance)
-np.savetxt("route.csv", route, delimiter = ',')
+np.savetxt("least_distance.csv", least_distance, delimiter = ',')
+#route = cg.GenRoute(adjacency, least_distance)
+#np.savetxt("route.csv", route, delimiter = ',')
