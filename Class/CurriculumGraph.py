@@ -39,7 +39,7 @@ class CurriculumGraph:
     
     def GenAdjacency(graph):
         matrix = nx.adjacency_matrix(graph).todense()
-        inf = np.infty
+        inf = 999999
         v =  int(np.sqrt(int(matrix.size)))
         for i in range(v):
             for j in range(v):
@@ -64,23 +64,22 @@ class CurriculumGraph:
     
     def GenRoute(adjacency, least_distance):
         v = int(np.sqrt(int(adjacency.size)))
-        inf = np.infty
+        inf = 999999
         route = np.full((v,v),inf)
         # for a in range(v):
         #     for b in range(v):
         #         if adjacency[a][b] == 1:
         #             route[a][b] = a
         #     route[a][a] = a + 1
-        for a in range(v):
-            for b in range(v):
-                route[a][b] = b + 1
+        # for a in range(v):
+        #     for b in range(v):
+        #         route[a][b] = b + 1
         for i in range(v):
             for j in range(v):
+                if least_distance[i][j] == inf:
+                    route[i][j] = i + 1
                 for k in range(v):
-                    if (least_distance[i][j] >= least_distance[i][k] + least_distance[k][j] and adjacency[i,k] < inf and i != k and j != k):
-                        if least_distance[i][j] == inf:
-                            route[i][j] = j + 1
-                    else:
+                    if (least_distance[i][j] >= least_distance[i][k] + least_distance[k][j] and adjacency[i,k] < inf and i != k and j != k and least_distance[i][j] != inf):
                         route[i][j] = k + 1
         return route
     
