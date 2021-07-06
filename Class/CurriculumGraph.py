@@ -14,8 +14,16 @@ import networkx as nx
 class CurriculumGraph:
     
     def GetSheet(excel_file, sheet_name): #GETS THE SPECIFIC SHEET WE WANT
-        return pd.read_excel(excel_file, sheet_name)
-    
+        if type(sheet_name) == str:
+            sheets = pd.read_excel(excel_file, sheet_name)
+        elif type(sheet_name) == list:
+            sheets = []
+            for i in range(0,len(sheet_name)):
+                sheets.append(pd.read_excel(excel_file,sheet_name[i]))
+        else:
+            print("Please enter a list or a string as the second argument.  You probably forgot to enclose the name in apostrophes ")
+        return sheets
+            
     def GetSheetNames(excel_file): #GENERATES THE SHEET NAMES
         return pd.ExcelFile(excel_file).sheet_names
 
@@ -66,14 +74,14 @@ class CurriculumGraph:
         v = int(np.sqrt(int(adjacency.size)))
         inf = 999999
         route = np.full((v,v),inf)
-        # for a in range(v):
-        #     for b in range(v):
-        #         if adjacency[a][b] == 1:
-        #             route[a][b] = a
-        #     route[a][a] = a + 1
-        # for a in range(v):
-        #     for b in range(v):
-        #         route[a][b] = b + 1
+        for a in range(v):
+            for b in range(v):
+                if adjacency[a,b] == 1:
+                    route[a][b] = a
+            route[a][a] = a + 1
+        for a in range(v):
+            for b in range(v):
+                route[a][b] = b + 1
         for i in range(v):
             for j in range(v):
                 if least_distance[i][j] == inf:
@@ -119,5 +127,3 @@ class CurriculumGraph:
     
     #def GenRoute(adjacency, least_distance):
     #    return FunGenRoute.GenRoute(adjacency, least_distance)
-    
-    
