@@ -4,7 +4,7 @@ import numpy as np
 from importlib import reload  
 
 cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx')
-print(cg.CoursesEdgesList)
+print(cg.GetSheetList)
 #animal = Cow('Annie', 'Betsie')
 #print(cg.CoursesEdgesList)
 #p.say_hi()  
