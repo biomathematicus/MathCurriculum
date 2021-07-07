@@ -1,18 +1,19 @@
 from Class.CurriculumGraph import CurriculumGraph
 import networkx as nx
 import numpy as np
+from importlib import reload  
 
-
-cg = CurriculumGraph('1054', 'qy4rqj4rqn4our')
+cg = CurriculumGraph("1053", "1073")
 #animal = Cow('Annie', 'Betsie')
 
 #p.say_hi()  
+
 #person = Person
 #a = cg('cow') #in parentheses put list of courses or stuff like that, but not yet. WIP
 
 #DEMO OF WORKING
 
-cg.GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
+#cg.GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
 
 #animal.moo('cow', 'pig')
 

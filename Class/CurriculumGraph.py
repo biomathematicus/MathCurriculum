@@ -14,11 +14,15 @@ import networkx as nx
 # A Sample class with init method  
 class CurriculumGraph:
     
-    def __init__(self, *sheets):
-        for i in sheets:
-            self.i = i
-            print(self.i)
+    CoursesList = []
+    CoursesEdgesList = []
     
+    def __init__(self, *sheets):
+        for i in range(0,len(sheets)):
+            self.CoursesList.append(sheets[i])   
+        for i in range(0,len(self.CoursesList)):
+            self.CoursesEdgesList.append("Edges" + self.CoursesList[i])
+        print(self.CoursesEdgesList)
         
     def GetSheet(self, excel_file, sheet_name): #GETS THE SPECIFIC SHEET WE WANT
         if type(sheet_name) == str:
