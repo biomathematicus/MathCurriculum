@@ -11,9 +11,16 @@ import pandas as pd
 import numpy as np
 import networkx as nx
 
+# A Sample class with init method  
 class CurriculumGraph:
     
-    def GetSheet(excel_file, sheet_name): #GETS THE SPECIFIC SHEET WE WANT
+    def __init__(self, *sheets):
+        for i in sheets:
+            self.i = i
+            print(self.i)
+    
+        
+    def GetSheet(self, excel_file, sheet_name): #GETS THE SPECIFIC SHEET WE WANT
         if type(sheet_name) == str:
             sheets = pd.read_excel(excel_file, sheet_name)
         elif type(sheet_name) == list:
@@ -24,28 +31,28 @@ class CurriculumGraph:
             print("Please enter a list or a string as the second argument.  You probably forgot to enclose the name in apostrophes ")
         return sheets
             
-    def GetSheetNames(excel_file): #GENERATES THE SHEET NAMES
+    def GetSheetNames(self, excel_file): #GENERATES THE SHEET NAMES
         return pd.ExcelFile(excel_file).sheet_names
 
-    def GetSheetList(excel_file): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
+    def GetSheetList(self, excel_file): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
         EdgesList = []
         excelfiledata = pd.ExcelFile(excel_file)
-        for i in range(0,len(CurriculumGraph.GetSheetNames(excel_file))):
+        for i in range(0,len(CurriculumGraph.GetSheetNames(self, excel_file))):
             if excelfiledata.sheet_names[i].startswith("Edges"):
-                EdgesList.append(CurriculumGraph.GetSheet(excel_file, excelfiledata.sheet_names[i]))
+                EdgesList.append(CurriculumGraph.GetSheet(self, excel_file, excelfiledata.sheet_names[i]))
         return(EdgesList)
     
-    def GetEdgesList(excel_file): #GENERATES THE CONCATENATED LIST OF EDGES
-        EdgesList = CurriculumGraph.GetSheetList(excel_file)
+    def GetEdgesList(self, excel_file): #GENERATES THE CONCATENATED LIST OF EDGES
+        EdgesList = CurriculumGraph.GetSheetList(self, excel_file)
         return pd.concat(EdgesList)
     
-    def GenEdgesCSV(excel_file, output_csv): #GENERATES THE .csv FILE OF EDGES FROM A .xslx
-        return CurriculumGraph.GetEdgesList(excel_file).to_csv(output_csv, index=False, header=False)
+    def GenEdgesCSV(self, excel_file, output_csv): #GENERATES THE .csv FILE OF EDGES FROM A .xslx
+        return CurriculumGraph.GetEdgesList(self, excel_file).to_csv(output_csv, index=False, header=False)
     
-    def GetMatrix(input_filename):
+    def GetMatrix(self, input_filename):
         return np.genfromtxt(input_filename, delimiter = ',')
     
-    def GenAdjacency(graph):
+    def GenAdjacency(self, graph):
         matrix = nx.adjacency_matrix(graph).todense()
         inf = 999999
         v =  int(np.sqrt(int(matrix.size)))
@@ -55,7 +62,7 @@ class CurriculumGraph:
                     matrix[i,j] = inf
         return matrix
     
-    def GenLeastDistance(adjacency):
+    def GenLeastDistance(self, adjacency):
         v = int(np.sqrt(int(adjacency.size)))
         inf = np.infty
         dist = np.full((v,v), inf)
@@ -70,7 +77,7 @@ class CurriculumGraph:
                     dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
         return dist
     
-    def GenRoute(adjacency, least_distance):
+    def GenRoute(self, adjacency, least_distance):
         v = int(np.sqrt(int(adjacency.size)))
         inf = 999999
         route = np.full((v,v),inf)
@@ -89,41 +96,39 @@ class CurriculumGraph:
                 for k in range(v):
                     if (least_distance[i][j] >= least_distance[i][k] + least_distance[k][j] and adjacency[i,k] < inf and i != k and j != k and least_distance[i][j] != inf):
                         route[i][j] = k + 1
-        return route
-    
+        return route  
+
     # adjacency = []
     # labels = []
     # minDistance = []
     
-    # CMR, MCA, MNI matrices put here
     
-    # def __init__(course):
-    #     print("cow")
+     # CMR, MCA, MNI matrices put here
+   
     
+     #def GenEdgesCSV(excel_file, output_csv):
+     #    return FunGenEdgesCSV.GenEdgesCSV(excel_file, output_csv)
     
-    #def GenEdgesCSV(excel_file, output_csv):
-    #    return FunGenEdgesCSV.GenEdgesCSV(excel_file, output_csv)
+     #def GetEdgesList(excel_file):
+     #    return FunGetEdgesList.GetEdgesList(excel_file)
     
-    #def GetEdgesList(excel_file):
-    #    return FunGetEdgesList.GetEdgesList(excel_file)
-    
-    #def GetSheet(excel_file, sheet_name):
-    #    return FunGetSheet.GetEdgesList(excel_file)
+     #def GetSheet(excel_file, sheet_name):
+     #    return FunGetSheet.GetEdgesList(excel_file)
         
-    #def GetSheetList(excel_file):
-    #    return FunGetSheetList.GetSheetList(excel_file)
+     #def GetSheetList(excel_file):
+     #    return FunGetSheetList.GetSheetList(excel_file)
     
-    #def GetSheetNames(excel_file):
-    #    return FunGetSheetNames.GetSheetNames(excel_file)
+     #def GetSheetNames(excel_file):
+     #    return FunGetSheetNames.GetSheetNames(excel_file)
     
-   # def GenAdjacency(graph):
-    #    return FunGenAdjacency.GenAdjacency(graph)
+    # def GenAdjacency(graph):
+     #    return FunGenAdjacency.GenAdjacency(graph)
  
-    #def GetMatrix(input_filename):
-    #    return FunGetMatrix.GetMatrix(input_filename)
+     #def GetMatrix(input_filename):
+     #    return FunGetMatrix.GetMatrix(input_filename)
     
-    #def GenLeastDistance(adjacency):
-    #    return FunGenLeastDistance.GenLeastDistance(adjacency)
+     #def GenLeastDistance(adjacency):
+     #    return FunGenLeastDistance.GenLeastDistance(adjacency)
     
-    #def GenRoute(adjacency, least_distance):
-    #    return FunGenRoute.GenRoute(adjacency, least_distance)
+     #def GenRoute(adjacency, least_distance):
+     #    return FunGenRoute.GenRoute(adjacency, least_distance)

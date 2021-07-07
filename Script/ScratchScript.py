@@ -1,18 +1,25 @@
-import Class.CurriculumGraph as CurriculumGraph
+from Class.CurriculumGraph import CurriculumGraph
 import networkx as nx
 import numpy as np
 
 
-cg = CurriculumGraph.CurriculumGraph #in parentheses put list of courses or stuff like that, but not yet. WIP
+cg = CurriculumGraph('1054', 'qy4rqj4rqn4our')
+#animal = Cow('Annie', 'Betsie')
+
+#p.say_hi()  
+#person = Person
+#a = cg('cow') #in parentheses put list of courses or stuff like that, but not yet. WIP
 
 #DEMO OF WORKING
 
-#cg.GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
+cg.GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
+
+#animal.moo('cow', 'pig')
 
 #print(isinstance('Edges1053', str))
 #print(pd.read_excel(r'FrequencyListOfTopics.xlsx', 'Edges1053'))
 
-graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
+#graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
 # nx.draw(graph)
 #graph = nx.DiGraph()
 # graph.add_edge(1,2, weight = 11)
@@ -36,9 +43,15 @@ graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.Di
 # graph.add_edge(7,4, weight = 20)
 # nx.draw(graph, arrows=1, with_labels=1)
 
-adjacency = cg.GenAdjacency(graph)
-np.savetxt("adjacency.csv", adjacency, delimiter = ',')
-least_distance = cg.GenLeastDistance(adjacency)
-np.savetxt("least_distance.csv", least_distance, delimiter = ',')
-route = cg.GenRoute(adjacency, least_distance)
-np.savetxt("route.csv", route, delimiter = ',')
+# adjacency = cg.GenAdjacency(graph)
+# np.savetxt("adjacency.csv", adjacency, delimiter = ',')
+# least_distance = cg.GenLeastDistance(adjacency)
+# np.savetxt("least_distance.csv", least_distance, delimiter = ',')
+# route = cg.GenRoute(adjacency, least_distance)
+# np.savetxt("route.csv", route, delimiter = ',')
+
+
+# A Sample class with init method  
+      
+#p = person('Nikhil')  
+#p.say_hi()  
