@@ -13,16 +13,19 @@ import networkx as nx
 
 # A Sample class with init method  
 class CurriculumGraph:
-    
     CoursesList = []
     CoursesEdgesList = []
+    excel_file = None
+    SheetsAsList = []
     
-    def __init__(self, *sheets):
-        for i in range(0,len(sheets)):
-            self.CoursesList.append(sheets[i])   
+    def __init__(self, excel_file, *courses):
+        for i in range(0,len(courses)):
+            self.CoursesList.append(courses[i])   
         for i in range(0,len(self.CoursesList)):
             self.CoursesEdgesList.append("Edges" + self.CoursesList[i])
-        print(self.CoursesEdgesList)
+        self.excel_file = excel_file
+        if len(courses) == 0:
+            self.CoursesEdgesList = self.GetSheetNames(excel_file)
         
     def GetSheet(self, excel_file, sheet_name): #GETS THE SPECIFIC SHEET WE WANT
         if type(sheet_name) == str:
@@ -36,15 +39,18 @@ class CurriculumGraph:
         return sheets
             
     def GetSheetNames(self, excel_file): #GENERATES THE SHEET NAMES
-        return pd.ExcelFile(excel_file).sheet_names
-
-    def GetSheetList(self, excel_file): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
+        ListOfNames = pd.ExcelFile(excel_file).sheet_names
         EdgesList = []
-        excelfiledata = pd.ExcelFile(excel_file)
-        for i in range(0,len(CurriculumGraph.GetSheetNames(self, excel_file))):
-            if excelfiledata.sheet_names[i].startswith("Edges"):
-                EdgesList.append(CurriculumGraph.GetSheet(self, excel_file, excelfiledata.sheet_names[i]))
-        return(EdgesList)
+        for i in range(len(ListOfNames)):
+            if ListOfNames[i].startswith("Edges"):
+                EdgesList.append(ListOfNames[i])
+        return EdgesList
+
+    def GetSheetList(self): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
+        excelfiledata = pd.ExcelFile(self.excel_file)
+        for i in range(0,len(CurriculumGraph.GetSheetNames(self, self.excel_file))):
+            self.SheetsAsList = self.SheetsAsList.append(CurriculumGraph.GetSheet(self, self.excel_file, excelfiledata.sheet_names[i]))
+        return(self.SheetsAsList)
     
     def GetEdgesList(self, excel_file): #GENERATES THE CONCATENATED LIST OF EDGES
         EdgesList = CurriculumGraph.GetSheetList(self, excel_file)

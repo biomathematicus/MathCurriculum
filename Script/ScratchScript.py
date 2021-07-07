@@ -3,9 +3,10 @@ import networkx as nx
 import numpy as np
 from importlib import reload  
 
-cg = CurriculumGraph("1053", "1073")
+cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx')
+print(cg.CoursesEdgesList)
 #animal = Cow('Annie', 'Betsie')
-
+#print(cg.CoursesEdgesList)
 #p.say_hi()  
 
 #person = Person
@@ -13,14 +14,14 @@ cg = CurriculumGraph("1053", "1073")
 
 #DEMO OF WORKING
 
-#cg.GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
+# cg.GenEdgesCSV(r'FrequencyListOfTopics.xlsx', "edges.csv")
 
 #animal.moo('cow', 'pig')
 
 #print(isinstance('Edges1053', str))
 #print(pd.read_excel(r'FrequencyListOfTopics.xlsx', 'Edges1053'))
 
-#graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
+# graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
 # nx.draw(graph)
 #graph = nx.DiGraph()
 # graph.add_edge(1,2, weight = 11)
@@ -50,9 +51,3 @@ cg = CurriculumGraph("1053", "1073")
 # np.savetxt("least_distance.csv", least_distance, delimiter = ',')
 # route = cg.GenRoute(adjacency, least_distance)
 # np.savetxt("route.csv", route, delimiter = ',')
-
-
-# A Sample class with init method  
-      
-#p = person('Nikhil')  
-#p.say_hi()  
