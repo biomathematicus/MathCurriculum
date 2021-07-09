@@ -3,8 +3,10 @@ import networkx as nx
 import numpy as np
 from importlib import reload  
 
-cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx')
-print(cg.GetSheetList)
+#cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx', '1073')
+#nx.draw(cg.Graph, with_labels=True)
+print(cg.Route)
+#print(cg.Edges)
 #animal = Cow('Annie', 'Betsie')
 #print(cg.CoursesEdgesList)
 #p.say_hi()  

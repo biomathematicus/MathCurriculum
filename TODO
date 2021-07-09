@@ -1,16 +1,12 @@
-1. Fix Route Matrix. (PARTIALLY COMPLETE, but we need 4. done first.)
+NEEDS 4.    1. Fix Route Matrix. (PARTIALLY COMPLETE, but we need 3. done first.)
 
-2. Input of specific courses as arguments to the CurriculumGraph class. (PARTIALLY COMPLETE)
+CAN DO NOW    2. Write our own Adjanency matrix algorithm.  The nx one is weird.
 
-3. Write our own Adjanency matrix algorithm.  The nx one is weird.
+CAN DO NOW    3. Make a dict of what each number in the graph represents.
 
-4. Make a dict of what each number in the graph represents.
+CAN'T DO NOW 4. Import Google Sheets automatically.
 
-5. Import Google Sheets automatically.
-
-6. See if we can have the display be tunable to whether it displays lesson or number representation.
-
-7. Change every function possible to use *args and then keep types as strings.
+CAN'T DO NOW (NEEDS 4.)    5. See if we can have the display be tunable to whether it displays lesson or number representation.
 
 ------ Non-Programming Related ------
 NP1. Get more course information from instructors to fill out the missing courses.

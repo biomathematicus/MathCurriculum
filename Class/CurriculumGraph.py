@@ -14,57 +14,73 @@ import networkx as nx
 # A Sample class with init method  
 class CurriculumGraph:
     CoursesList = []
-    CoursesEdgesList = []
+    SheetNameEdgesList = []
     excel_file = None
-    SheetsAsList = []
+    EdgesSheetsList = []
+    Edges = None
+    Graph = None
+    
+    Adjacency = None
+    LeastDistance = None
+    Route = None
+    
     
     def __init__(self, excel_file, *courses):
-        for i in range(0,len(courses)):
+        for i in range(len(courses)):
             self.CoursesList.append(courses[i])   
-        for i in range(0,len(self.CoursesList)):
-            self.CoursesEdgesList.append("Edges" + self.CoursesList[i])
+        for i in range(len(self.CoursesList)):
+            self.SheetNameEdgesList.append("Edges" + self.CoursesList[i])
         self.excel_file = excel_file
         if len(courses) == 0:
-            self.CoursesEdgesList = self.GetSheetNames(excel_file)
+            self.CoursesList = pd.ExcelFile(excel_file).sheet_names
+            self.SheetNameEdgesList = self.GetEdgesSheetNames()
+        self.EdgesSheetsList = self.GetEdgesSheetsList()
+        self.Edges = self.GetEdges()
+        self.GenEdgesCSV()
+        self.Graph = self.GenGraph()
+        self.Adjacency = self.GenAdjacency(self.Graph)
+        self.LeastDistance = self.GenLeastDistance(self.Adjacency)
+        self.Route = self.GenRoute(self.Adjacency, self.LeastDistance)
         
-    def GetSheet(self, excel_file, sheet_name): #GETS THE SPECIFIC SHEET WE WANT
-        if type(sheet_name) == str:
-            sheets = pd.read_excel(excel_file, sheet_name)
-        elif type(sheet_name) == list:
-            sheets = []
-            for i in range(0,len(sheet_name)):
-                sheets.append(pd.read_excel(excel_file,sheet_name[i]))
-        else:
-            print("Please enter a list or a string as the second argument.  You probably forgot to enclose the name in apostrophes ")
-        return sheets
             
-    def GetSheetNames(self, excel_file): #GENERATES THE SHEET NAMES
-        ListOfNames = pd.ExcelFile(excel_file).sheet_names
-        EdgesList = []
-        for i in range(len(ListOfNames)):
-            if ListOfNames[i].startswith("Edges"):
-                EdgesList.append(ListOfNames[i])
-        return EdgesList
+    # def GetEdgesSheet(self): #GETS THE SPECIFIC EDGES SHEET WE WANT
+    #     for i in range(len(self.SheetNameEdgesList)):
+    #         self.EdgesSheetsList.append(pd.read_excel(self.excel_file, sheet_name = self.SheetNameEdgesList[i]))
+    #     return self.EdgesSheetsList
+            
+    def GetEdgesSheetNames(self): #GENERATES THE SHEET NAMES (UGLY????)
+        for i in range(len(self.CoursesList)):
+            if self.CoursesList[i].startswith("Edges"):
+                self.SheetNameEdgesList.append(self.CoursesList[i])
+        return self.SheetNameEdgesList
 
-    def GetSheetList(self): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
-        excelfiledata = pd.ExcelFile(self.excel_file)
-        for i in range(0,len(CurriculumGraph.GetSheetNames(self, self.excel_file))):
-            self.SheetsAsList = self.SheetsAsList.append(CurriculumGraph.GetSheet(self, self.excel_file, excelfiledata.sheet_names[i]))
-        return(self.SheetsAsList)
+    def GetEdgesSheetsList(self): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
+        #excelfiledata = pd.ExcelFile(self.excel_file)
+        EdgesSheetsList = []
+        for i in range(len(self.SheetNameEdgesList)):
+            EdgesSheetsList.append(pd.read_excel(self.excel_file, sheet_name = self.SheetNameEdgesList[i]))
+        return EdgesSheetsList
     
-    def GetEdgesList(self, excel_file): #GENERATES THE CONCATENATED LIST OF EDGES
-        EdgesList = CurriculumGraph.GetSheetList(self, excel_file)
-        return pd.concat(EdgesList)
+    def GetEdges(self): #GENERATES THE CONCATENATED DATAFRAME (?) OF EDGES
+        # Edges = self.EdgesSheetsList[0]
+        # for i in range(1, len(self.EdgesSheetsList)):
+        #     Edges = pd.concat(Edges, self.EdgesSheetsList[i])
+        # return Edges
+        return pd.concat(self.EdgesSheetsList)
     
-    def GenEdgesCSV(self, excel_file, output_csv): #GENERATES THE .csv FILE OF EDGES FROM A .xslx
-        return CurriculumGraph.GetEdgesList(self, excel_file).to_csv(output_csv, index=False, header=False)
+    def GenEdgesCSV(self): #GENERATES THE .csv FILE OF EDGES FROM A .xslx
+        return self.GetEdges().to_csv("edges.csv", index=False, header=False)
+    
+    def GenGraph(self):
+        return nx.read_weighted_edgelist("edges.csv", delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
+        
     
     def GetMatrix(self, input_filename):
         return np.genfromtxt(input_filename, delimiter = ',')
     
     def GenAdjacency(self, graph):
         matrix = nx.adjacency_matrix(graph).todense()
-        inf = 999999
+        inf = np.infty
         v =  int(np.sqrt(int(matrix.size)))
         for i in range(v):
             for j in range(v):
