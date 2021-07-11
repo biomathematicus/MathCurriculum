@@ -65,7 +65,7 @@ class CurriculumGraph:
         for i in graph.nodes:
             for j in graph.nodes:
                 if graph.has_edge(i,j):
-                    matrix[int(i)][int(j)] = 1 #graph[str(i)][str(j)]['weight']   # REPLACE WITH WEIGHT
+                    matrix[int(i)][int(j)] = graph[str(i)][str(j)]['weight']
                 elif i == j:
                     matrix[int(i)][int(j)] = 0
         return matrix
@@ -100,6 +100,6 @@ class CurriculumGraph:
                 if least_distance[i][j] == inf:
                     route[i][j] = i
                 for k in range(v):
-                    if (least_distance[i][j] >= least_distance[i][k] + least_distance[k][j] and adjacency[i][k] < inf and i != k and j != k):
+                    if (least_distance[i][j] >= least_distance[i][k] + least_distance[k][j] and adjacency[i][k] < inf and i != k and j != k and least_distance[i][j] != inf):
                         route[i][j] = k
         return route
