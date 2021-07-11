@@ -77,7 +77,7 @@ class CurriculumGraph:
         dist = np.full((v,v), inf)
         for a in range(v):
             for b in range(v):
-                if adjacency[a][b] != 0:
+                if (adjacency[a][b] != 0 and adjacency[a][b] != inf):
                     dist[a][b] = adjacency[a][b]
             dist[a][a] = 0
         for k in range(v):
@@ -92,7 +92,7 @@ class CurriculumGraph:
         route = np.full((v,v),inf)
         for a in range(v):
             for b in range(v):
-                if adjacency[a][b] == 1:
+                if (adjacency[a][b] != 0 and adjacency[a][b] != inf):
                     route[a][b] = b
             route[a][a] = a
         for i in range(v):
