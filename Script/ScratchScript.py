@@ -3,9 +3,10 @@ import networkx as nx
 import numpy as np
 from importlib import reload  
 
-#cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx', '1073')
+cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx')
 #nx.draw(cg.Graph, with_labels=True)
-print(cg.Route)
+#print(nx.number_of_nodes(cg.Graph))
+#print(cg.Route)
 #print(cg.Edges)
 #animal = Cow('Annie', 'Betsie')
 #print(cg.CoursesEdgesList)
@@ -25,7 +26,7 @@ print(cg.Route)
 
 # graph = nx.read_weighted_edgelist('edges.csv', delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
 # nx.draw(graph)
-#graph = nx.DiGraph()
+# graph = nx.DiGraph()
 # graph.add_edge(1,2, weight = 11)
 # graph.add_edge(2,1, weight = 11)
 # graph.add_edge( 1, 3, weight = 30 )
@@ -47,9 +48,13 @@ print(cg.Route)
 # graph.add_edge(7,4, weight = 20)
 # nx.draw(graph, arrows=1, with_labels=1)
 
+
+
+
+
 # adjacency = cg.GenAdjacency(graph)
-# np.savetxt("adjacency.csv", adjacency, delimiter = ',')
-# least_distance = cg.GenLeastDistance(adjacency)
-# np.savetxt("least_distance.csv", least_distance, delimiter = ',')
-# route = cg.GenRoute(adjacency, least_distance)
-# np.savetxt("route.csv", route, delimiter = ',')
+#np.savetxt("adjacency.csv", cg.Adjacency, delimiter = ',')
+#least_distance = cg.GenLeastDistance(cg.Adjacency)
+#np.savetxt("least_distance.csv", cg.LeastDistance, delimiter = ',')
+#route = cg.GenRoute(cg.Adjacency, cg.LeastDistance)
+#np.savetxt("route.csv", cg.Route, delimiter = ',')

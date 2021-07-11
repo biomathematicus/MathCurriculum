@@ -1,12 +1,11 @@
-NEEDS 4.    1. Fix Route Matrix. (PARTIALLY COMPLETE, but we need 3. done first.)
+1. Fix Route Matrix. (NEED TO VERIFY CORRECTNESS, BUT MAYBE DONE)
 
-CAN DO NOW    2. Write our own Adjanency matrix algorithm.  The nx one is weird.
+2. Make a dict of what each number in the graph represents. (STARTED)
 
-CAN DO NOW    3. Make a dict of what each number in the graph represents.
+3. Import Google Sheets automatically. (CAN'T DO NOW)
 
-CAN'T DO NOW 4. Import Google Sheets automatically.
+4. See if we can have the display be tunable to whether it displays lesson or number representation. (NEEDS 2.)
 
-CAN'T DO NOW (NEEDS 4.)    5. See if we can have the display be tunable to whether it displays lesson or number representation.
 
 ------ Non-Programming Related ------
 NP1. Get more course information from instructors to fill out the missing courses.
