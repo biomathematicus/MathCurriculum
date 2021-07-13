@@ -1,18 +1,19 @@
 from Class.CurriculumGraph import CurriculumGraph
 import networkx as nx
 import numpy as np
-from importlib import reload  
 
-cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx')
+cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx', '1073')
+
 #nx.draw(cg.Graph, with_labels=True)
 #print(nx.number_of_nodes(cg.Graph))
 #print(cg.Route)
 #print(cg.Edges)
 #animal = Cow('Annie', 'Betsie')
 #print(cg.CoursesEdgesList)
-#p.say_hi()  
 
+#p.say_hi()  
 #person = Person
+
 #a = cg('cow') #in parentheses put list of courses or stuff like that, but not yet. WIP
 
 #DEMO OF WORKING
@@ -50,11 +51,6 @@ cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx')
 
 
 
-
-
-# adjacency = cg.GenAdjacency(graph)
 #np.savetxt("adjacency.csv", cg.Adjacency, delimiter = ',')
-#least_distance = cg.GenLeastDistance(cg.Adjacency)
 #np.savetxt("least_distance.csv", cg.LeastDistance, delimiter = ',')
-#route = cg.GenRoute(cg.Adjacency, cg.LeastDistance)
 #np.savetxt("route.csv", cg.Route, delimiter = ',')
