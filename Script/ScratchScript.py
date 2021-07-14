@@ -3,6 +3,7 @@ import networkx as nx
 import numpy as np
 
 cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx', '1073')
+print(cg.GetPath('0', '4'))
 
 #nx.draw(cg.Graph, with_labels=True)
 #print(nx.number_of_nodes(cg.Graph))
