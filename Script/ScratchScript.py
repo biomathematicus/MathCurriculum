@@ -1,9 +1,12 @@
-from Class.CurriculumGraph import CurriculumGraph
 import networkx as nx
 import numpy as np
 from importlib import reload  
+from sys import path
+from os import getcwd
+path.append(getcwd() + "\\..\\Class") 
+from CurriculumGraph import CurriculumGraph
 
-cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx')
+cg = CurriculumGraph(r'..\\Data\\FrequencyListOfTopics.xlsx','1073')
 #nx.draw(cg.Graph, with_labels=True)
 #print(nx.number_of_nodes(cg.Graph))
 #print(cg.Route)
