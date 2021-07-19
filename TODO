@@ -1,11 +1,12 @@
 1. Fix Route Matrix. (NEED TO VERIFY CORRECTNESS, BUT MAYBE DONE)
 
-2. Make a dict of what each number in the graph represents. (STARTED)
+2. Import Google Sheets automatically. (CAN'T DO NOW)
 
-3. Import Google Sheets automatically. (CAN'T DO NOW)
+3. Redo Everything to use PostgresSQL (HAVEN'T STARTED)
 
-4. See if we can have the display be tunable to whether it displays lesson or number representation. (NEEDS 2.)
-
+4. Put this in a wrapper to make it easily accessible to people who don't code (HAVEN'T STARTED)
 
 ------ Non-Programming Related ------
 NP1. Get more course information from instructors to fill out the missing courses.
+
+NP2. Student Learning Outcomes tracking utilities 
