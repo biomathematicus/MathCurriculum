@@ -1,11 +1,21 @@
-from Class.CurriculumGraph import CurriculumGraph
+# Add path to the Class folder. All classes can now be imported directly
+from sys import path
+from os import getcwd
+path.append(getcwd() + "\\..\\Class") 
+from CurriculumGraph import CurriculumGraph
+
+# Load aditional libraries
 import networkx as nx
 import numpy as np
 
+# Instantiate the class
 cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx', '1073')
+
+# Display graph
+nx.draw(cg.Graph, with_labels=True)
+# Show path
 print(cg.GetPath('0', '4'))
 
-#nx.draw(cg.Graph, with_labels=True)
 #print(nx.number_of_nodes(cg.Graph))
 #print(cg.Route)
 #print(cg.Edges)
