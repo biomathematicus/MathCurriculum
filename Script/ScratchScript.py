@@ -4,17 +4,29 @@ from os import getcwd
 path.append(getcwd() + "\\..\\Class") 
 from CurriculumGraph import CurriculumGraph
 
-# Load aditional libraries
+# Load additional libraries
 import networkx as nx
 import numpy as np
 
 # Instantiate the class
-cg = CurriculumGraph(r'FrequencyListOfTopics.xlsx', '1073')
+cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx', '1073')
 
 # Display graph
-nx.draw(cg.Graph, with_labels=True)
-# Show path
-print(cg.GetPath('0', '4'))
+#nx.draw(cg.Graph, with_labels=True)
+
+# Show path from first to second argument
+print(cg.GetPath('0', '30'))
+
+
+
+# BELOW IS LITERALLY JUST SCRATCHWORK.  MIGHT BE USEFUL LATER SO I HAVENT DELETED IT
+#
+#
+#
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+#print(cg.LabelDict['1'])
 
 #print(nx.number_of_nodes(cg.Graph))
 #print(cg.Route)

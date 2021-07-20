@@ -36,20 +36,24 @@ class CurriculumGraph:
         #self.Route = self.GenRoute(self.Adjacency, self.LeastDistance) 
         nx.draw(self.Graph, labels = self.LabelDict, with_labels = True)
         
-    def GetPath(self, a, b):
-        return nx.shortest_path(self.Graph, a, b)
-        
-    def GetEdgesSheetNames(self): #GENERATES THE SHEET NAMES (UGLY????)
+    def GetPath(self, a, b): # GETS PATH AND FORMATS TO INCLUDE LESSON NAMES
+        PathList = []
+        for i in nx.shortest_path(self.Graph, a, b):
+            PathList.append(i + ": " + self.LabelDict[i])
+        return PathList
+             
+            
+    def GetEdgesSheetNames(self): # GENERATES THE SHEET NAMES
         for i in range(len(self.CoursesList)):
             if self.CoursesList[i].startswith("Edges"):
                 self.SheetNameEdgesList.append(self.CoursesList[i])
         return self.SheetNameEdgesList
     
-    def GetAliases(self):
+    def GetAliases(self): # GETS THE LIST OF LESSONS (ALIASES) CORRESPONDING TO NODES
         self.Aliases = pd.read_excel(self.excel_file, sheet_name = 'Dict').to_numpy()
         return self.Aliases
     
-    def GenLabelDict(self):
+    def GenLabelDict(self): # GENERATES A DICTIONARY OF NODE # TO LESSON
         for i in list(self.Graph):
             for j in range(len(self.Aliases[:,0])):
                 if str(i) == str(self.Aliases[j,0]):
@@ -62,20 +66,20 @@ class CurriculumGraph:
             EdgesSheetsList.append(pd.read_excel(self.excel_file, sheet_name = self.SheetNameEdgesList[i]))
         return EdgesSheetsList
     
-    def GetEdges(self): #GENERATES THE CONCATENATED DATAFRAME (?) OF EDGES
+    def GetEdges(self): # GENERATES THE CONCATENATED DATAFRAME (?) OF EDGES
         return pd.concat(self.EdgesSheetsList)
     
-    def GenEdgesCSV(self): #GENERATES THE .csv FILE OF EDGES FROM A .xslx
+    def GenEdgesCSV(self): # GENERATES THE .csv FILE OF EDGES FROM A .xslx
         return self.GetEdges().to_csv("edges.csv", index=False, header=False)
     
-    def GenGraph(self):
+    def GenGraph(self):  # GENERATES THE NETWORKX GRAPH FROM THE EDGES CSV.  PROBABLY WILL REMOVE
         return nx.read_weighted_edgelist("edges.csv", delimiter=',', create_using=nx.DiGraph(), encoding="utf-8-sig")
         
     
-    def GetMatrix(self, input_filename):
+    def GetMatrix(self, input_filename):  # GETS MATRIX FROM FILE
         return np.genfromtxt(input_filename, delimiter = ',')
     
-    def GenAdjacency(self,graph):
+    def GenAdjacency(self,graph): #GENERATES WEIGHTED ADJACENCY MATRIX
         inf = np.infty
         v = 0
         for i in graph.nodes:
@@ -90,7 +94,7 @@ class CurriculumGraph:
         return matrix
         
         
-    def GenLeastDistance(self, adjacency):
+    def GenLeastDistance(self, adjacency): # FLOYD WARSHALL
         v = int(np.sqrt(int(adjacency.size)))
         inf = np.infty
         dist = np.full((v,v), inf)
@@ -105,7 +109,7 @@ class CurriculumGraph:
                     dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
         return dist
     
-    def GenRoute(self, adjacency, least_distance):
+    def GenRoute(self, adjacency, least_distance):  # GENERATES THE ROUTE MATRIX
         v = int(np.sqrt(int(adjacency.size)))
         inf = np.infty
         route = np.full((v,v),inf)
