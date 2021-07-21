@@ -1,6 +1,6 @@
 1. Fix Route Matrix. (NEED TO VERIFY CORRECTNESS, BUT MAYBE DONE)
 
-2. Import Google Sheets automatically. (CAN'T DO NOW)
+2. Fix lessons to individual courses and make path show the course (HAVEN'T STARTED)
 
 3. Redo Everything to use PostgresSQL (HAVEN'T STARTED)
 
@@ -9,4 +9,6 @@
 ------ Non-Programming Related ------
 NP1. Get more course information from instructors to fill out the missing courses.
 
-NP2. Student Learning Outcomes tracking utilities 
+NP2. Student Learning Outcomes tracking utilities
+
+NP3. Fix Cal 3 and Linear Algebra discrepancies 

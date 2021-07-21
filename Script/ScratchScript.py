@@ -9,15 +9,13 @@ import networkx as nx
 import numpy as np
 
 # Instantiate the class
-cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx', '1073')
+cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx')
+
+# Show path from first to second argument
+#print(cg.GetPath('0', '30'))
 
 # Display graph
 #nx.draw(cg.Graph, with_labels=True)
-
-# Show path from first to second argument
-print(cg.GetPath('0', '30'))
-
-
 
 # BELOW IS LITERALLY JUST SCRATCHWORK.  MIGHT BE USEFUL LATER SO I HAVENT DELETED IT
 #
@@ -25,6 +23,8 @@ print(cg.GetPath('0', '30'))
 #
 #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 
 #print(cg.LabelDict['1'])
 
