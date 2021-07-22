@@ -12,7 +12,7 @@ import numpy as np
 cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx')
 
 # Show path from first to second argument
-#print(cg.GetPath('0', '30'))
+#PrintPath('0','370')
 
 # Display graph
 #nx.draw(cg.Graph, with_labels=True)

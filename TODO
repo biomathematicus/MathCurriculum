@@ -1,12 +1,10 @@
 1. Fix Route Matrix. (NEED TO VERIFY CORRECTNESS, BUT MAYBE DONE)
 
-2. Fix lessons to individual courses and make path show the course (HAVEN'T STARTED)
+2. Redo Everything to use PostgresSQL (HAVEN'T STARTED)
 
-3. Redo Everything to use PostgresSQL (HAVEN'T STARTED)
+3. Put this in a wrapper to make it easily accessible to people who don't code (HAVEN'T STARTED)
 
-4. Put this in a wrapper to make it easily accessible to people who don't code (HAVEN'T STARTED)
-
-5. Make the pretty Javascript/HTML5 graph applets. (HAVEN'T STARTED)
+4. Make the pretty Javascript/HTML5 graph applets. (HAVEN'T STARTED)
 
 ------ Non-Programming Related ------
 NP1. Get more course information from instructors to fill out the missing courses.

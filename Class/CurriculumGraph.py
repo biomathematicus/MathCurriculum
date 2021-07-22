@@ -31,17 +31,14 @@ class CurriculumGraph:
         self.GenEdgesCSV()
         self.Graph = self.GenGraph()        
         self.GenLabelDict()
-        self.Adjacency = self.GenAdjacency(self.Graph)
-        self.LeastDistance = self.GenLeastDistance(self.Adjacency)
-        self.Route = self.GenRoute(self.Adjacency, self.LeastDistance) 
-        nx.draw(self.Graph, labels = self.LabelDict, with_labels = True)
+        #self.Adjacency = self.GenAdjacency(self.Graph)
+        #self.LeastDistance = self.GenLeastDistance(self.Adjacency)
+        #self.Route = self.GenRoute(self.Adjacency, self.LeastDistance) 
+        #nx.draw(self.Graph, labels = self.LabelDict, with_labels = True)
         
-    def GetPath(self, a, b): # GETS PATH AND FORMATS TO INCLUDE LESSON NAMES
-        PathList = []
+    def PrintPath(self, a, b): # GETS PATH AND FORMATS TO INCLUDE LESSON NAMES (ADD PATH LENGTHS AND FORMATTING LATER)
         for i in nx.shortest_path(self.Graph, a, b):
-            PathList.append(i + ": " + self.LabelDict[i])
-        return PathList
-             
+            print(i + ": " + self.LabelDict[i])             
             
     def GetEdgesSheetNames(self): # GENERATES THE SHEET NAMES
         for i in range(len(self.CoursesList)):
@@ -50,14 +47,14 @@ class CurriculumGraph:
         return self.SheetNameEdgesList
     
     def GetAliases(self): # GETS THE LIST OF LESSONS (ALIASES) CORRESPONDING TO NODES
-        self.Aliases = pd.read_excel(self.excel_file, sheet_name = 'Dict').to_numpy()
+        self.Aliases = pd.read_excel(self.excel_file, sheet_name = 'Lessons').to_numpy()
         return self.Aliases
     
     def GenLabelDict(self): # GENERATES A DICTIONARY OF NODE # TO LESSON
         for i in list(self.Graph):
             for j in range(len(self.Aliases[:,0])):
                 if str(i) == str(self.Aliases[j,0]):
-                    self.LabelDict[str(i)] = str(self.Aliases[j][1])
+                    self.LabelDict[str(i)] = str(str(self.Aliases[j][1]) + " - " + str(self.Aliases[j][2]))
         return self.LabelDict
 
     def GetEdgesSheetsList(self): #GENERATES THE LIST WITH SHEETS OF EDGES AS ELEMENTS
