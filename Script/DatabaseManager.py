@@ -5,6 +5,7 @@ from os import getcwd
 from networkx.drawing.layout import planar_layout
 path.append(getcwd() + "/../Class")
 from CurriculumGraph import CurriculumGraph
+from CurriculumDB import CurriculumDB
 
 # import plotting utils
 import matplotlib
@@ -15,17 +16,14 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 import pandas as pd
+import pyodbc
 
-# Instantiate the class and useful variables.
+# NOTE TO USER: PLEASE ADD THE FOLLOWING LINE WITH THE APPROPRIATE PARAMETERS REPLACING THE ONES HERE
+# cdb = CurriculumDB(excel_file, 'serverip', 'databasename', 'username', 'password')
 
-cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx')
-# Adjacency = cg.Adjacency
-# LeastDistance = cg.LeastDistance
-# Route = cg.Route
+cdb = CurriculumDB(r'../Data/FrequencyListOfTopics.xlsx', '127.0.0.1', 'ALICE_DEVELOPMENT', 'ALICE', 'edutronica')
 
-# Show path from first to second argument
-# cg.PrintPath('0','3')
-
-# Show graph
-# nx.draw_kamada_kawai(cg.Graph, labels = cg.LabelDict, with_labels = True)
-# plt.show()
+#cdb.GenOpus()
+#cdb.GenPagina()
+#cdb.GenLinguaOpus()
+#cdb.GenLinguaPagina()
