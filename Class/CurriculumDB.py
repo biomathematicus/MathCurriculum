@@ -43,6 +43,7 @@ class CurriculumDB:
         for i in range(0,int(self.CoursesDescriptions.size/3)):
             LinguaOpus.append([self.CoursesDescriptions[i][0], self.CoursesDescriptions[i][1], self.CoursesDescriptions[i][2]])
         self.cursor.executemany("SET ANSI_WARNINGS OFF; INSERT INTO LINGUA_OPUS (id_opus, cd_lingua, ds_title, ds_tag, ds_content, in_visible, id_created, dt_created) VALUES (?, 'HISPANIA', ?, ?, '', 1, 1, GETDATE())", LinguaOpus)
+        self.cursor.executemany("SET ANSI_WARNINGS OFF; INSERT INTO LINGUA_OPUS (id_opus, cd_lingua, ds_title, ds_tag, ds_content, in_visible, id_created, dt_created) VALUES (?, 'BRITANNIA', ?, ?, '', 1, 1, GETDATE())", LinguaOpus)
         self.cnxn.commit()
     
     def GenLinguaPagina(self):
