@@ -22,8 +22,38 @@ import pyodbc
 # cdb = CurriculumDB(excel_file, 'serverip', 'databasename', 'username', 'password')
 
 cdb = CurriculumDB(r'../Data/FrequencyListOfTopics.xlsx', '127.0.0.1', 'ALICE_DEVELOPMENT', 'ALICE', 'edutronica')
+cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx')
 
-#cdb.GenOpus()
-#cdb.GenPagina()
-#cdb.GenLinguaOpus()
-#cdb.GenLinguaPagina()
+# print(cdb.LessonsClasses[0][1])
+# for i in range(1,int(cdb.LessonsClasses.size/3)):
+#     if int(cdb.LessonsClasses[i][1]) != int(cdb.LessonsClasses[i-1][1]):
+#         print(int(cdb.LessonsClasses[i][1]))
+
+# cdb.GenOpus()
+# cdb.GenPagina()
+# cdb.GenLinguaPagina()
+# cdb.GenLinguaOpus()
+
+# cdb.cursor.execute('DELETE FROM INTEREST')
+# cdb.cursor.execute('DELETE FROM CATEGORY')
+# cdb.cursor.execute('DELETE FROM LINGUA_PAGINA')
+# cdb.cursor.execute('DELETE FROM LINGUA_OPUS')
+# cdb.cursor.execute('DELETE FROM PAGINA')
+# cdb.cursor.execute('DELETE FROM OPUS')
+
+# cdb.cnxn.commit()
+
+cdb.cursor.execute('SELECT * FROM LINGUA_PAGINA')
+for row in cdb.cursor:
+    print(row)
+
+# print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+
+# for i in cdb.edgesnumbers:
+#     print(i)
+
+# print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+
+# for i in cg.SheetNameEdgesList:
+#     print(i)
+
