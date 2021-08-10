@@ -31,7 +31,7 @@ class CurriculumGraph:
         self.GenEdgesCSV()
         self.Graph = self.GenGraph()        
         self.GenLabelDict()
-        #self.Adjacency = self.GenAdjacency(self.Graph)
+        self.Adjacency = self.GenAdjacency(self.Graph)
         #self.LeastDistance = self.GenLeastDistance(self.Adjacency)
         #self.Route = self.GenRoute(self.Adjacency, self.LeastDistance) 
         
@@ -79,14 +79,14 @@ class CurriculumGraph:
         inf = np.infty
         v = 0
         for i in graph.nodes:
-            v = max(int(i),v)
-        matrix = np.full((v+1,v+1), inf)
+            v = max(int(float(i)),v)
+        matrix = np.full((v,v), inf)
         for i in graph.nodes:
             for j in graph.nodes:
                 if graph.has_edge(i,j):
-                    matrix[int(i)][int(j)] = graph[i][j]['weight']
+                    matrix[int(i)-1][int(j) -1] = graph[i][j]['weight']
                 elif i == j:
-                    matrix[int(i)][int(j)] = 0
+                    matrix[int(i) - 1][int(j) - 1] = 0
         return matrix
         
         

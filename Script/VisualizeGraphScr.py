@@ -24,7 +24,7 @@ cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx')
 # Route = cg.Route
 
 # Show path from first to second argument
-# cg.PrintPath('0','3')
+cg.PrintPath('1','1')
 
 # Show graph
 # nx.draw_kamada_kawai(cg.Graph, labels = cg.LabelDict, with_labels = True)
