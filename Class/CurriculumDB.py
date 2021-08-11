@@ -64,7 +64,6 @@ class CurriculumDB:
         for i in self.PaginaDict:
             self.opus_idDict[i] = (self.PaginaDict[i])[1]
 
-
     def GenOpus(self):  
         for i in self.edgesnumbers:
             self.cursor.execute("INSERT INTO OPUS (id_opus, id_artifex, id_emendator, cd_opus_type, id_created, dt_created, ds_graph) VALUES (?, 1, 1, 'LITERATRONIC', 1, GETDATE(), '')", i)
@@ -74,12 +73,13 @@ class CurriculumDB:
         Pagina = []
         for i in range(0,len(self.LessonsClasses[:,0])):
             Pagina.append([int(self.LessonsClasses[i][0]),int(self.LessonsClasses[i][1])])
-        self.cursor.executemany("INSERT INTO PAGINA (id_pagina, id_opus, id_created, dt_created, am_link, ds_gui, pagina_type, pagina_cat) VALUES (?, ?, 1, GETDATE(), 0, NEWID(), NULL, NULL)",Pagina)
+        self.cursor.executemany("INSERT INTO PAGINA (id_pagina, id_opus, id_created, dt_created, am_link, ds_gui, pagina_type, pagina_cat) VALUES (?, ?, 1, GETDATE(), 0, NEWID(), NULL, NULL)", Pagina)
         self.cnxn.commit()
+        
     def GenLinguaOpus(self):
         LinguaOpus = []
         for i in range(0,len(self.CoursesDescriptions[:,0])):
-            LinguaOpus.append([self.CoursesDescriptions[i][0], self.CoursesDescriptions[i][1], self.CoursesDescriptions[i][2]])
+            LinguaOpus.append([self.CoursesDescriptions[i][0], "MAT" + str(self.CoursesDescriptions[i][0]) + ": " + self.CoursesDescriptions[i][1], self.CoursesDescriptions[i][2]])
         self.cursor.executemany("SET ANSI_WARNINGS OFF; INSERT INTO LINGUA_OPUS (id_opus, cd_lingua, ds_title, ds_tag, ds_content, in_visible, id_created, dt_created) VALUES (?, 'HISPANIA', ?, ?, '', 1, 1, GETDATE())", LinguaOpus)
         self.cursor.executemany("SET ANSI_WARNINGS OFF; INSERT INTO LINGUA_OPUS (id_opus, cd_lingua, ds_title, ds_tag, ds_content, in_visible, id_created, dt_created) VALUES (?, 'BRITANNIA', ?, ?, '', 1, 1, GETDATE())", LinguaOpus)
         self.cnxn.commit()

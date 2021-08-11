@@ -19,27 +19,34 @@ import pyodbc
 # cdb = CurriculumDB(excel_file, 'serverip', 'databasename', 'username', 'password')
 
 cdb = CurriculumDB(r'../Data/FrequencyListOfTopics.xlsx', '127.0.0.1', 'ALICE_DEVELOPMENT', 'ALICE', 'edutronica')
-# cdb.cursor.execute('DELETE FROM DOCTRINA')
-#cdb.cursor.execute('DELETE FROM LINGUA_DOCTRINA')
-# cdb.cursor.execute('DELETE FROM MATRIX')
-# cdb.cursor.execute('DELETE FROM LINGUA_PAGINA')
-# cdb.cursor.execute('DELETE FROM LINGUA_OPUS')
-# cdb.cursor.execute('DELETE FROM PAGINA')
-# cdb.cursor.execute('DELETE FROM OPUS WHERE id_opus > 1000')
-#cdb.cnxn.commit()
 
-#cdb.cursor.execute('DROP TABLE DOCTRINA')
-#cdb.cnxn.commit()
+cdb.cursor.execute('DELETE FROM DOCTRINA WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM LINGUA_DOCTRINA')
+cdb.cursor.execute('DELETE FROM LINGUA_PAGINA WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM LINGUA_OPUS WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM COLLAB_OPUS_XREF WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM INTEREST WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM Category WHERE Opus > 1000')
+cdb.cursor.execute('DELETE FROM MATRIX WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM COMMUNICATIO WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM PAGINA WHERE id_opus > 1000')
+cdb.cursor.execute('DELETE FROM OPUS WHERE id_opus > 1000')
+cdb.cursor.commit()
 
-# cdb.GenOpus()
-# cdb.GenPagina()
-# cdb.GenLinguaPagina()
-# cdb.GenLinguaOpus()
-#cdb.GenLinguaDoctrina()
+cdb.GenOpus()
+cdb.GenPagina()
+cdb.GenLinguaPagina()
+cdb.GenLinguaOpus()
+cdb.GenMatrix()
+cdb.GenDoctrina()
+cdb.GenLinguaDoctrina()
 
-# cdb.cursor.execute('SELECT * FROM DOCTRINA')
+# USE THIS TO VIEw THINGS
+
+# cdb.cursor.execute('SELECT * FROM LINGUA_OPUS')
 # for row in cdb.cursor:
 #     print(row)
+
 
 #cdb.GenMatrix()
 #print(cdb.Adjacency[0][0])
@@ -53,4 +60,3 @@ cdb = CurriculumDB(r'../Data/FrequencyListOfTopics.xlsx', '127.0.0.1', 'ALICE_DE
 #cdb.cursor.execute('DROP TABLE DOCTRINA')
 #cdb.cursor.execute('DROP TABLE LINGUA_DOCTRINA')
 #cdb.cursor.commit()
-#cdb.GenDoctrina()
