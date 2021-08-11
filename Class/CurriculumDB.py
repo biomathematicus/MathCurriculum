@@ -99,8 +99,8 @@ class CurriculumDB:
             for j in range(0,len(LastLesson)):
                 if LastLesson[j][0] == int(self.LessonsClasses[i][1]):
                     LastLessonCourse = LastLesson[j][1]
-            LinguaPagina.append([int(self.LessonsClasses[i][1]), int(self.LessonsClasses[i][0]), self.LessonsClasses[i][2], LastLessonCourse])
-        self.cursor.executemany("INSERT INTO LINGUA_PAGINA (id_opus, id_pagina, cd_lingua, ds_title, ds_content, id_created, dt_created, id_capstone, ds_StartLesson) VALUES (?, ?, 'BRITANNIA', ?, '', 1, GETDATE(), ?, NULL)",LinguaPagina)
+            LinguaPagina.append([int(self.LessonsClasses[i][1]), int(self.LessonsClasses[i][0]), self.LessonsClasses[i][2], self.LessonsClasses[i][2], LastLessonCourse])
+        self.cursor.executemany("INSERT INTO LINGUA_PAGINA (id_opus, id_pagina, cd_lingua, ds_title, ds_tag, ds_content, id_created, dt_created, id_capstone, ds_StartLesson) VALUES (?, ?, 'BRITANNIA', ?, ?, '', 1, GETDATE(), ?, NULL)",LinguaPagina)
         self.cnxn.commit()
 
     def GenMatrix(self):
