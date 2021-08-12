@@ -41,17 +41,12 @@ cdb.GenMatrix()
 cdb.GenDoctrina()
 cdb.GenLinguaDoctrina()
 
-# USE THIS TO VIEw THINGS
+# USE THIS TO VIEW THINGS
 
 # cdb.cursor.execute('SELECT * FROM LINGUA_OPUS')
 # for row in cdb.cursor:
 #     print(row)
 
-
-#cdb.GenMatrix()
-#print(cdb.Adjacency[0][0])
-#cdb.PaginaDict[1]
-#print(int(np.sqrt(cdb.Adjacency.size)))
 
 #cdb.cursor.execute('create Table DOCTRINA (id_pagina int, id_opus int, id_doctrina int, dt_created datetime, dt_edited datetime,  id_created int, id_edited int)')
 

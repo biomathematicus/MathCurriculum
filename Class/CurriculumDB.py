@@ -108,7 +108,7 @@ class CurriculumDB:
         for i in range(0, int(np.sqrt(self.Adjacency.size))):
             for j in range(0, int(np.sqrt(self.Adjacency.size))):
                 if (self.Adjacency[i][j] > 0 and self.Adjacency[i][j] < np.infty):
-                    MCAFillerList.append([self.opus_idDict[i+1], self.opus_idDict[j+1], i+1, j+1, int(self.Adjacency[i][j])])
+                    MCAFillerList.append([self.opus_idDict[i+1], self.opus_idDict[j+1], int((self.PaginaDict[i+1])[0]), int((self.PaginaDict[j+1])[0]), int(self.Adjacency[i][j])])
         self.cursor.executemany("INSERT INTO MATRIX (cd_matrix_type, id_opus_i, id_opus, i, j, id_opus_nexus, am_value, cd_link_type, Path, Category_1, Category_2, Category_3, Category_4, Category_5, Category_6, Category_7, Category_8, Category_9, Category_10) VALUES ('MCA', ?, ?, ?, ?, NULL, ?, 'NEXT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",MCAFillerList)
         self.cnxn.commit()
 
