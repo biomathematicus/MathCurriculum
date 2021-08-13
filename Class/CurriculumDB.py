@@ -67,13 +67,16 @@ class CurriculumDB:
     def GenOpus(self):  
         for i in self.edgesnumbers:
             self.cursor.execute("INSERT INTO OPUS (id_opus, id_artifex, id_emendator, cd_opus_type, id_created, dt_created, ds_graph) VALUES (?, 1, 1, 'LITERATRONIC', 1, GETDATE(), '')", i)
+            self.cursor.execute("INSERT INTO CATEGORY(Opus, Id, Lable) VALUES (?, 1, 'Science')",i)
+            self.cursor.execute("INSERT INTO CATEGORY(Opus, Id, Lable) VALUES (?, 2, 'Engineering')",i)
+            self.cursor.execute("INSERT INTO CATEGORY(Opus, Id, Lable) VALUES (?, 3, 'Humanities')",i)
         self.cnxn.commit()
 
     def GenPagina(self):
         Pagina = []
         for i in range(0,len(self.LessonsClasses[:,0])):
             Pagina.append([int(self.LessonsClasses[i][0]),int(self.LessonsClasses[i][1])])
-        self.cursor.executemany("INSERT INTO PAGINA (id_pagina, id_opus, id_created, dt_created, am_link, ds_gui, pagina_type, pagina_cat) VALUES (?, ?, 1, GETDATE(), 0, NEWID(), NULL, NULL)", Pagina)
+        self.cursor.executemany("INSERT INTO PAGINA (id_pagina, id_opus, id_created, dt_created, am_link, ds_gui, pagina_type, pagina_cat) VALUES (?, ?, 1, GETDATE(), 0, NEWID(), 'PRE-REQ', 1)", Pagina)
         self.cnxn.commit()
         
     def GenLinguaOpus(self):

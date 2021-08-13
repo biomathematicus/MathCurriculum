@@ -48,10 +48,8 @@ cdb.GenLinguaDoctrina()
 #     print(row)
 
 
+# THESE BELOW MAY NOT BE NEEDED EVER AGAIN
+
 #cdb.cursor.execute('create Table DOCTRINA (id_pagina int, id_opus int, id_doctrina int, dt_created datetime, dt_edited datetime,  id_created int, id_edited int)')
 
 #cdb.cursor.execute('CREATE Table LINGUA_DOCTRINA (id_doctrina int, cd_lingua text, ds_doctrina text, dt_created datetime, dt_edited datetime,  id_created int, id_edited int)')
-
-#cdb.cursor.execute('DROP TABLE DOCTRINA')
-#cdb.cursor.execute('DROP TABLE LINGUA_DOCTRINA')
-#cdb.cursor.commit()
