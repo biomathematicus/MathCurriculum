@@ -41,14 +41,14 @@ cdb.GenMatrix()
 cdb.GenDoctrina()
 cdb.GenLinguaDoctrina()
 
-# USE THIS TO VIEW THINGS
+# USE THIS TO VIEW THINGS.  REPLACE LINGUA_OPUS WITH WHATEVER TABLE YOU WANT.
 
 # cdb.cursor.execute('SELECT * FROM LINGUA_OPUS')
 # for row in cdb.cursor:
 #     print(row)
 
 
-# THESE BELOW MAY NOT BE NEEDED EVER AGAIN
+# THESE TWO BELOW MAY NOT BE NEEDED EVER AGAIN IF THEY ARE NEEDED RUN THEM BOTH BEFORE RUNNING cdb.cursor.execute('DELETE FROM DOCTRINA WHERE id_opus > 1000')
 
 #cdb.cursor.execute('create Table DOCTRINA (id_pagina int, id_opus int, id_doctrina int, dt_created datetime, dt_edited datetime,  id_created int, id_edited int)')
 

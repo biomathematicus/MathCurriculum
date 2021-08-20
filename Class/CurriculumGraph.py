@@ -32,8 +32,8 @@ class CurriculumGraph:
         self.Graph = self.GenGraph()        
         self.GenLabelDict()
         self.Adjacency = self.GenAdjacency(self.Graph)
-        #self.LeastDistance = self.GenLeastDistance(self.Adjacency)
-        #self.Route = self.GenRoute(self.Adjacency, self.LeastDistance) 
+        #self.LeastDistance = self.GenLeastDistance(self.Adjacency) # This is optional for now
+        #self.Route = self.GenRoute(self.Adjacency, self.LeastDistance) # This is optional for now
         
     def PrintPath(self, a, b): # GETS PATH AND FORMATS TO INCLUDE LESSON NAMES (ADD PATH LENGTHS AND FORMATTING LATER)
         for i in nx.shortest_path(self.Graph, a, b):

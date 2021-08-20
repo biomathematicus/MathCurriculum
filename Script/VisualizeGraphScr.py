@@ -19,12 +19,13 @@ import pandas as pd
 # Instantiate the class and useful variables.
 
 cg = CurriculumGraph(r'../Data/FrequencyListOfTopics.xlsx')
+
 # Adjacency = cg.Adjacency
 # LeastDistance = cg.LeastDistance
 # Route = cg.Route
 
 # Show path from first to second argument
-cg.PrintPath('1','1')
+cg.PrintPath('1','370')
 
 # Show graph
 # nx.draw_kamada_kawai(cg.Graph, labels = cg.LabelDict, with_labels = True)
